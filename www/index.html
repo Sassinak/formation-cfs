@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Knockout</title>
+  <!-- CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
+    <link href="../style.css" rel="stylesheet" >
+  <!-- JS -->
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <script src="../binder.js" defer="defer"></script>
+  <script src="../questionVm.js" defer="defer"></script>
+  <script src="../exempleAjax.js" defer="defer"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <form>
+          <div data-bind="foreach: questions">
+            <div class="row" data-bind="if: ($index() + 1) === $parent.current()">
+              <div class="question--container">
+                <div class="question--current" data-bind="text: $parent.currentQuestion(number)"></div>
+                <h1 class="question--title" data-bind="html: $parent.currentQuestionTitle(title, $index()), tooltip: {title: infos}"></h1>
+                <div data-bind="foreach: answers" class="form-check">
+                  <div class="col">
+                    <input type="radio" class="form-check-input" data-bind="checked: $root.answers, checkedValue: value, attr: {id: value}">
+                    <label class="form-check-label" data-bind="text: text, attr: {for: value}"></label>
+                  </div>
+                </div>
+                <div data-bind="if: $root.answers">
+                  <div data-bind="text: goodAnswer"></div>
+                </div>
+                <div class="row">
+                  <div data-bind="if: $parent.showPrev" class="col-4">
+                    <button type="button" class="btn btn-outline-secondary" data-bind="click: $parent.prevQuestion">
+                      Précedente
+                    </button>
+                  </div>
+                  <div data-bind="if: $parent.showNext()" class="col-4">
+                    <button type="button" class="btn btn-outline-primary" data-bind="click: $parent.nextQuestion">
+                      Suivante
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

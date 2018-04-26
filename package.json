@@ -1,0 +1,21 @@
+{
+  "name": "csf-knockout",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lucien.benie",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "grunt": "^1.0.2",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-imagemin": "^2.0.1",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.1",
+    "grunt-parker": "^0.2.0",
+    "grunt-pot": "^0.3.0",
+    "grunt-readme": "^0.4.5",
+    "load-grunt-tasks": "^3.5.2",
+    "time-grunt": "^1.4.0"
+  }
+}
