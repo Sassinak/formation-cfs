@@ -8,3 +8,5 @@ $(function () {
       console.error(err);
     })
 });
+
+console.log('test');
